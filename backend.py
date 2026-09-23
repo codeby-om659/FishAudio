@@ -61,7 +61,8 @@ def crate_user(user:UserCreate):
     try:
         cursor.execute(query,Value)
         db.commit()
-        return {"status":"success","id":id,"message":"new user succesfully registered","name":user.name}
+        user_id=cursor.lastrowid
+        return {"status":"success","id":user_id,"message":"new user succesfully registered","name":user.name}
     except mysql.connector.Error as err:
         db.rollback()
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
@@ -140,13 +141,14 @@ def generate_voice_remiander(task_id:int):
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail=f"Task not found")
         # Dynamic Scrips task
         formatted_time=task_data["scheduled_time"].strftime("%I:%M %p")
-        prompt_text=f"Suno{task_data['name']}! Aapka task{task_data['title']}{formatted_time} baje schedule hai.kripya isse pura kare."
+        prompt_text=f"Suno {task_data['name']}! Aapka task{task_data['title']}{formatted_time} baje schedule hai.kripya isse pura kare."
 
     #fish aaaaaaaaudio api reequest
         url="https://api.fish.audio/v1/tts"
         headers={
             "Authorization":"Bearer sk-fish-HabYz6HcbpCqQFuZzuQq65l4SCSGMd8KkYTQuMLvWQs",
-            "Content-Type":"applicaton/json"
+            "Content-Type":"application/json",
+            "model":"s2.1-pro-free"
         }
         payload={
             "text":prompt_text,
