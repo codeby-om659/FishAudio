@@ -1,17 +1,17 @@
 # 🎙️ AI Voice Timetable & Reminder API
 
-FastAPI, MySQL, aur Fish Audio API par aadharit ek smart backend service jo users ke scheduled timetable tasks ke liye personalized, human-like voice reminders (.mp3) real-time mein generate karti hai.
-A FastAPI and MySQL-based smart backend system that manages user schedules and generates dynamic, personalized voice reminders (.mp3) using Fish Audio API.
+- FastAPI, MySQL, aur Fish Audio API par aadharit ek smart backend service jo users ke scheduled timetable tasks ke liye personalized, human-like voice reminders (.mp3) real-time mein generate karti hai.
+- A FastAPI and MySQL-based smart backend system that manages user schedules and generates dynamic, personalized voice reminders (.mp3) using Fish Audio API.
 
 ---
 
 ## 🛠️ Tech Stack & Prerequisites
 
-- *Backend Framework:* FastAPI (Python)
-- *Database:* MySQL
-- *Database Driver:* mysql-connector-python
-- *Voice Generation API:* Fish Audio (Text-to-Speech)
-- *Server:* Uvicorn
+- **Backend Framework:** FastAPI (Python)
+- **Database:** MySQL
+- **Database Driver:** mysql-connector-python
+- **Voice Generation API:** Fish Audio (Text-to-Speech)
+- **Server:**  Uvicorn
 
 ---
 ## 📌 API Endpoints Overview
