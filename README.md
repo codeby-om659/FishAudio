@@ -4,6 +4,12 @@
 - A FastAPI and MySQL-based smart backend system that manages user schedules and generates dynamic, personalized voice reminders (.mp3) using Fish Audio API.
 
 ---
+<p align="center">
+  <img src="./fishaudio.png" alt="AI voice TIme Table" width="100%">
+</p>
+
+<h1 align="center">TIme_table 🚨</h1>
+</p
 
 ## 🛠️ Tech Stack & Prerequisites
 
