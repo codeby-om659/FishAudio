@@ -1,6 +1,7 @@
 # 🎙️ AI Voice Timetable & Reminder API
 
 FastAPI, MySQL, aur Fish Audio API par aadharit ek smart backend service jo users ke scheduled timetable tasks ke liye personalized, human-like voice reminders (.mp3) real-time mein generate karti hai.
+A FastAPI and MySQL-based smart backend system that manages user schedules and generates dynamic, personalized voice reminders (.mp3) using Fish Audio API.
 
 ---
 
@@ -13,37 +14,17 @@ FastAPI, MySQL, aur Fish Audio API par aadharit ek smart backend service jo user
 - *Server:* Uvicorn
 
 ---
+## 📌 API Endpoints Overview
 
-## 🗄️ Database Architecture
+### 👤 User Operations
 
-Project mein relational database structure (2 tables) ka use kiya gaya hai:
+* GET / - Check system health and verify backend status.
+* POST /users - Onboard a new user into the system.
 
-1. *users (Parent Table):* User credentials aur registration details store karne ke liye.
-2. *tasks (Child Table):* Timetable/schedules store karne ke liye (user_id foreign key ke sath users table se connected with ON DELETE CASCADE).
+### 📅 Task & Timetable Operations
 
-### SQL Schema Setup
+* POST /tasks - Schedule a new task for a specific user.
+* GET /users/{user_id}/task - Retrieve all scheduled tasks for a specific user.
+* GET /task/{task_id}/voice-reminder - Generate and stream a personalized MP3 voice reminder via Fish Audio API.
 
-MySQL Workbench ya MySQL Command Line Client par yeh SQL script run karein:
-
-```sql
-CREATE DATABASE IF NOT EXISTS timetable_db;
-USE timetable_db;
-
-CREATE TABLE IF NOT EXISTS users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    email VARCHAR(150) UNIQUE NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE TABLE IF NOT EXISTS tasks (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    title VARCHAR(255) NOT NULL,
-    description TEXT,
-    scheduled_time DATETIME NOT NULL,
-    is_completed BOOLEAN DEFAULT FALSE,
-    reminder_sent BOOLEAN DEFAULT FALSE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-);
+---
